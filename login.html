@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+      h1,
+      form {
+        text-align: center;
+      }
+      #error-message {
+        color: red;
+        text-align: center;
+        margin-top: 10px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Login</h1>
+      <form action="">
+        <input type="text" placeholder="Username" id="username" />
+        <input type="password" placeholder="Password" id="password" />
+        <input type="button" value="Login" id="tombol" />
+        <div id="error-message"></div>
+      </form>
+    </div>
+
+    <script>
+      const bnTombol = document.querySelector("#tombol");
+      const txUsername = document.querySelector("#username");
+      const txPassword = document.querySelector("#password");
+      const errorMessage = document.querySelector("#error-message");
+
+      function validateEmail(email) {
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return emailPattern.test(email);
+      }
+
+      bnTombol.addEventListener("click", function () {
+        const username = txUsername.value;
+        const password = txPassword.value;
+        // console.log(txUsername.value);
+        // if(txUsername.value == "rafiftampan") {
+        //     console.log("Username anda benar");
+        // }
+        // if(txPassword.value == "rapip") {
+        //     console.log("Password anda benar");
+        // }
+        // if (txUsername.value == "rafiftampan" && txPassword.value == "rapip") {
+        //   window.location = "index.html";
+        // } else {
+        // console.log("Username dan password anda salah");
+        // alert("Username dan password anda salah. Silahkan dicek kembali!!!");
+        if (!validateEmail(username)) {
+          errorMessage.textContent = "Username harus menggunakan email!!! ";
+          errorMessage.style.display = "block"; // Tampilkan pesan error
+        } else if (
+          username == "rafiftampan@example.com" &&
+          password == "rapip"
+        ) {
+          window.location = "index.html";
+        } else {
+          errorMessage.textContent =
+            "Username dan password anda salah. Silahkan dicek kembali!!!";
+          errorMessage.style.display = "block"; //chalange
+        }
+      });
+    </script>
+  </body>
+</html>
